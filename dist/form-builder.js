@@ -258,6 +258,12 @@ fbUtils.escapeHtml = function (html) {
   return escapeElement.innerHTML;
 };
 
+fbUtils.parsedHtml = function (html) {
+  var escapeElement = document.createElement('textarea');
+  escapeElement.innerHTML = html;
+  return escapeElement.textContent;
+};
+
 fbUtils.escapeAttr = function (str) {
   var match = {
     '"': '&quot;',
@@ -2458,7 +2464,7 @@ function formBuilderEventsFn() {
 
     // update preview to label
     $sortableFields.on('keyup change', '[name="label"]', function () {
-      $('.field-label', $(this).closest('li')).text($(this).val());
+      $('.field-label', $(this).closest('li')).html(this.value);
     });
 
     // remove error styling when users tries to correct mistake

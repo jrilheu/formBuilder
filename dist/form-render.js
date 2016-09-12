@@ -303,6 +303,12 @@ fbUtils.escapeHtml = function (html) {
   return escapeElement.innerHTML;
 };
 
+fbUtils.parsedHtml = function (html) {
+  var escapeElement = document.createElement('textarea');
+  escapeElement.innerHTML = html;
+  return escapeElement.textContent;
+};
+
 fbUtils.escapeAttr = function (str) {
   var match = {
     '"': '&quot;',
@@ -392,7 +398,7 @@ function FormRenderFn(options, element) {
     var fieldMarkup = '',
         fieldLabel = '',
         optionsMarkup = '',
-        fieldLabelText = fieldData.label || '',
+        fieldLabelText = utils.parsedHtml(fieldData.label) || '',
         fieldDesc = fieldData.description || '',
         fieldRequired = '',
         fieldOptions = fieldData.values || [];
@@ -412,8 +418,6 @@ function FormRenderFn(options, element) {
       }
       fieldLabel = '<label for="' + fieldData.id + '">' + fieldLabelText + ' ' + fieldRequired + ' ' + fieldDesc + '</label>';
     }
-
-    var fieldLabelVal = fieldData.label;
 
     delete fieldData.label;
     delete fieldData.description;
@@ -494,7 +498,7 @@ function FormRenderFn(options, element) {
         break;
       case 'button':
       case 'submit':
-        fieldMarkup = '<button ' + fieldDataString + '>' + fieldLabelVal + '</button>';
+        fieldMarkup = '<button ' + fieldDataString + '>' + fieldLabelText + '</button>';
         break;
       case 'checkbox':
         fieldMarkup = '<input ' + fieldDataString + '> ' + fieldLabel;
@@ -506,7 +510,7 @@ function FormRenderFn(options, element) {
         }
         break;
       default:
-        fieldMarkup = '<' + fieldData.type + ' ' + fieldDataString + '>' + fieldLabelVal + '</' + fieldData.type + '>';
+        fieldMarkup = '<' + fieldData.type + ' ' + fieldDataString + '>' + fieldLabelText + '</' + fieldData.type + '>';
     }
 
     if (fieldData.type !== 'hidden') {

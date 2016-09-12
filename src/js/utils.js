@@ -211,7 +211,11 @@ fbUtils.escapeHtml = function(html) {
   return escapeElement.innerHTML;
 };
 
-
+fbUtils.parsedHtml = function(html) {
+  var escapeElement = document.createElement('textarea');
+  escapeElement.innerHTML = html;
+  return escapeElement.textContent;
+};
 
 fbUtils.escapeAttr = function(str) {
   var match = {
