@@ -178,7 +178,7 @@
         toggle: 'Toggle',
         warning: 'Warning!',
         value: 'Value',
-        viewJSON: '{  }',
+        viewJSON: '{ json }',
         viewXML: '&lt;/&gt;',
         yes: 'Yes'
       },
