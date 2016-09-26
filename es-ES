@@ -2,7 +2,7 @@ addOption = Añadir Opción
 allFieldsRemoved = Todos los campos fueron eliminados.
 allowSelect = Permitir seleccionar
 autocomplete = Autocompletar
-button = vacío
+button = Botón
 cannotBeEmpty = Este campo no puede estar vacio
 checkboxGroup = Grupo de casillas
 checkbox = Casilla
@@ -20,7 +20,7 @@ devMode = Modo Desarrollador
 editNames = Editar Nombres
 editorTitle = Elementos del form
 editXML = Editar XML
-fieldDeleteWarning: falso
+fieldDeleteWarning: false
 fieldVars = Variables del campo
 fieldNonEditable = Este campo no se puede editar.
 fieldRemoveWarning = ¿Estas seguro de querer quitar este campo?
